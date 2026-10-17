@@ -2,7 +2,7 @@
 
 A password strength and breach checker. It estimates how long a password would take to crack, and checks whether it has appeared in known data breaches, without the password ever leaving your browser.
 
-<!-- After deploying, add the live link here, for example: **Live demo:** https://your-link -->
+**Live demo:** https://entropy-check.vercel.app
 
 ## Features
 
