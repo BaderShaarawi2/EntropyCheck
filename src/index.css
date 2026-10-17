@@ -1,0 +1,133 @@
+/* Our own small CSS file, loaded AFTER Bootstrap (see main.jsx).
+   Because it loads second, anything we write here wins over Bootstrap's defaults.
+   We use it to give the site its own look: one indigo accent and soft grey-blue text. */
+
+/* Bootstrap is built on CSS variables (names starting with --bs-).
+   Changing them here changes the colors everywhere Bootstrap uses them. */
+:root {
+  --bs-body-font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bs-body-color: #0f172a;          /* main text: very dark slate */
+  --bs-secondary-color: #64748b;     /* soft grey-blue text */
+  --bs-secondary-rgb: 100, 116, 139; /* same color, used by the .text-secondary class */
+  --bs-border-color: #e2e8f0;        /* light grey lines */
+  --bs-tertiary-bg: #f8fafc;         /* very light grey section background */
+  --accent: #4f46e5;                 /* our indigo accent (used in several places below) */
+  --accent-dark: #4338ca;            /* darker indigo for hover */
+  --accent-light: #a5b4fc;           /* pale indigo for the disabled button */
+  --accent-soft: #eef2ff;            /* very pale indigo behind the icons */
+}
+
+body {
+  -webkit-font-smoothing: antialiased; /* slightly smoother text */
+}
+
+/* Make Bootstrap's main button use our indigo instead of Bootstrap blue.
+   Each --bs-btn-* variable controls one state of the button. */
+.btn-primary {
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-bg: var(--accent-dark);
+  --bs-btn-hover-border-color: var(--accent-dark);
+  --bs-btn-active-bg: var(--accent-dark);
+  --bs-btn-active-border-color: var(--accent-dark);
+  --bs-btn-disabled-bg: var(--accent-light);
+  --bs-btn-disabled-border-color: var(--accent-light);
+  --bs-btn-disabled-opacity: 1;
+}
+
+/* Indigo glow when the user clicks into the input (Bootstrap's default is blue). */
+.form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.2);
+}
+
+/* ----- Small helper classes used by our components ----- */
+
+/* Keeps page content from stretching too wide on big monitors. */
+.page-width {
+  max-width: 1000px;
+}
+
+/* The white password card is narrower than the page. */
+.checker-card {
+  max-width: 580px;
+}
+
+/* The big headline. clamp(min, preferred, max) makes it shrink on small screens. */
+.hero-title {
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+/* The small rounded square behind each icon. */
+.icon-box {
+  width: 40px;
+  height: 40px;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Gray nav/footer links that turn dark on hover. */
+.soft-link {
+  color: var(--bs-secondary-color);
+  text-decoration: none;
+}
+.soft-link:hover {
+  color: var(--bs-body-color);
+}
+
+/* When a link jumps to a section, leave a gap above it. */
+.scroll-offset {
+  scroll-margin-top: 80px;
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+/* ----- Result colors (green = good, amber = medium, red = bad) ----- */
+
+/* Colors for the strength label text */
+.text-weak {
+  color: #dc2626;
+}
+.text-medium {
+  color: #b45309;
+}
+.text-strong {
+  color: #15803d;
+}
+
+/* Colors for the filled part of the strength bar */
+.bar-weak {
+  background-color: #dc2626;
+}
+.bar-medium {
+  background-color: #d97706;
+}
+.bar-strong {
+  background-color: #16a34a;
+}
+
+/* The box that shows the breach result. Each version has its own colors. */
+.status-box {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid;
+}
+.status-safe {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+.status-danger {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+.status-neutral {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+  color: #475569;
+}
